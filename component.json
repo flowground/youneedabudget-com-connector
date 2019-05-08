@@ -1,0 +1,514 @@
+{
+    "title": "YNAB API Endpoints",
+    "description": "Our API uses a REST based design, leverages the JSON data format, and relies upon HTTPS for transport. We respond with meaningful HTTP response codes and if an error occurs, we include error details in the response body.  API Documentation is at https://api.youneedabudget.com",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/youneedabudget.com/1.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.youneedabudget.com/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "bearer": {
+                "label": "Authorization (bearer)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "getBudgets": {
+            "main": "./lib/actions/getBudgets.js",
+            "title": "List budgets",
+            "description": "Returns budgets list with summary information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getBudgets.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getBudgetById": {
+            "main": "./lib/actions/getBudgetById.js",
+            "title": "Single budget",
+            "description": "Returns a single budget with all related entities.  This resource is effectively a full budget export.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getBudgetById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAccounts": {
+            "main": "./lib/actions/getAccounts.js",
+            "title": "Account list",
+            "description": "Returns all accounts",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAccounts.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getAccountById": {
+            "main": "./lib/actions/getAccountById.js",
+            "title": "Single account",
+            "description": "Returns a single account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getAccountById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTransactionsByAccount": {
+            "main": "./lib/actions/getTransactionsByAccount.js",
+            "title": "List account transactions",
+            "description": "Returns all transactions for a specified account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransactionsByAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getCategories": {
+            "main": "./lib/actions/getCategories.js",
+            "title": "List categories",
+            "description": "Returns all categories grouped by category group.  Amounts (budgeted, activity, balance, etc.) are specific to the current budget month (UTC).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getCategories.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getCategoryById": {
+            "main": "./lib/actions/getCategoryById.js",
+            "title": "Single category",
+            "description": "Returns a single category.  Amounts (budgeted, activity, balance, etc.) are specific to the current budget month (UTC).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getCategoryById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTransactionsByCategory": {
+            "main": "./lib/actions/getTransactionsByCategory.js",
+            "title": "List category transactions",
+            "description": "Returns all transactions for a specified category",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransactionsByCategory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getBudgetMonths": {
+            "main": "./lib/actions/getBudgetMonths.js",
+            "title": "List budget months",
+            "description": "Returns all budget months",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getBudgetMonths.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getBudgetMonth": {
+            "main": "./lib/actions/getBudgetMonth.js",
+            "title": "Single budget month",
+            "description": "Returns a single budget month",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getBudgetMonth.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getMonthCategoryById": {
+            "main": "./lib/actions/getMonthCategoryById.js",
+            "title": "Single category for a specific budget month",
+            "description": "Returns a single category for a specific budget month.  Amounts (budgeted, activity, balance, etc.) are specific to the current budget month (UTC).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getMonthCategoryById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateMonthCategory": {
+            "main": "./lib/actions/updateMonthCategory.js",
+            "title": "Update a category for a specific month",
+            "description": "Update a category for a specific month",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateMonthCategory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPayeeLocations": {
+            "main": "./lib/actions/getPayeeLocations.js",
+            "title": "List payee locations",
+            "description": "Returns all payee locations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPayeeLocations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPayeeLocationById": {
+            "main": "./lib/actions/getPayeeLocationById.js",
+            "title": "Single payee location",
+            "description": "Returns a single payee location",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPayeeLocationById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPayees": {
+            "main": "./lib/actions/getPayees.js",
+            "title": "List payees",
+            "description": "Returns all payees",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPayees.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPayeeById": {
+            "main": "./lib/actions/getPayeeById.js",
+            "title": "Single payee",
+            "description": "Returns single payee",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPayeeById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPayeeLocationsByPayee": {
+            "main": "./lib/actions/getPayeeLocationsByPayee.js",
+            "title": "List locations for a payee",
+            "description": "Returns all payee locations for the specified payee",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPayeeLocationsByPayee.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTransactionsByPayee": {
+            "main": "./lib/actions/getTransactionsByPayee.js",
+            "title": "List payee transactions",
+            "description": "Returns all transactions for a specified payee",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransactionsByPayee.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getScheduledTransactions": {
+            "main": "./lib/actions/getScheduledTransactions.js",
+            "title": "List scheduled transactions",
+            "description": "Returns all scheduled transactions",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getScheduledTransactions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getScheduledTransactionById": {
+            "main": "./lib/actions/getScheduledTransactionById.js",
+            "title": "Single scheduled transaction",
+            "description": "Returns a single scheduled transaction",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getScheduledTransactionById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getBudgetSettingsById": {
+            "main": "./lib/actions/getBudgetSettingsById.js",
+            "title": "Budget Settings",
+            "description": "Returns settings for a budget",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getBudgetSettingsById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTransactions": {
+            "main": "./lib/actions/getTransactions.js",
+            "title": "List transactions",
+            "description": "Returns budget transactions",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransactions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateTransactions": {
+            "main": "./lib/actions/updateTransactions.js",
+            "title": "Update multiple transactions",
+            "description": "Updates multiple transactions, by 'id' or 'import_id'.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateTransactions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "createTransaction": {
+            "main": "./lib/actions/createTransaction.js",
+            "title": "Create a single transaction or multiple transactions",
+            "description": "Creates a single transaction or multiple transactions.  If you provide a body containing a 'transaction' object, a single transaction will be created and if you provide a body containing a 'transactions' array, multiple transactions will be created.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createTransaction.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "bulkCreateTransactions": {
+            "main": "./lib/actions/bulkCreateTransactions.js",
+            "title": "Bulk create transactions",
+            "description": "Creates multiple transactions.  Although this endpoint is still supported, it is recommended to use 'POST /budgets/{budget_id}/transactions' to create multiple transactions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/bulkCreateTransactions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getTransactionById": {
+            "main": "./lib/actions/getTransactionById.js",
+            "title": "Single transaction",
+            "description": "Returns a single transaction",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getTransactionById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateTransaction": {
+            "main": "./lib/actions/updateTransaction.js",
+            "title": "Updates an existing transaction",
+            "description": "Updates a transaction",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateTransaction.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getUser": {
+            "main": "./lib/actions/getUser.js",
+            "title": "User info",
+            "description": "Returns authenticated user information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getUser.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

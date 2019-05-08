@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "budget_id": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "month": {
+            "required": true,
+            "type": "string",
+            "format": "date"
+        },
+        "category_id": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "requestBody": {
+            "properties": {
+                "category": {
+                    "properties": {
+                        "budgeted": {
+                            "description": "Budgeted amount in milliunits format",
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "budgeted"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "category"
+            ],
+            "type": "object"
+        }
+    }
+}

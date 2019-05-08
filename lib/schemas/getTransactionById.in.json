@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "budget_id": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "transaction_id": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

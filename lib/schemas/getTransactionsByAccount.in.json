@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "budget_id": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "account_id": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "since_date": {
+            "required": false,
+            "type": "string",
+            "format": "date"
+        },
+        "type": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "uncategorized",
+                "unapproved"
+            ]
+        },
+        "last_knowledge_of_server": {
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+        }
+    }
+}
